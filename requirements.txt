@@ -1,0 +1,6 @@
+gTTS
+PyObjC
+wheel
+playsound
+urllib3==1.26.6
+TTS
