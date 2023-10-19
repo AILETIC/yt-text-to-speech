@@ -87,6 +87,44 @@ This guide will walk you through the installation process for running a text-to-
    python3 better.py
    ```
 
+## Bug fixing
+
+if you get the following error:
+
+```
+raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 11 column 21 (char 549)
+```
+
+It is a bug in the TTS package. It is due to a misspelled json file. 
+It should be here some where: "./env/lib/python3.11/site-packages/TTS/.models.json"
+
+To find the json file:
+
+Go to the "manage.py" file. It should be located in your "env/" folder.
+Something similar to this part: "./env/lib/python3.11/site-packages/TTS/utils/manage.py"
+
+Here change the following:
+```
+with open(file_path, "r", encoding="utf-8") as json_file:
+   self.models_dict = json.load(json_file)
+```
+to:
+
+```
+print("file path: ", file_path)
+exit()
+with open(file_path, "r", encoding="utf-8") as json_file:
+   self.models_dict = json.load(json_file)
+```
+
+Rerun the script.
+
+Now it should print the file path. Open that file with vscode or another editor. The editor will show you the problem. The problem is on line 10. Remove ",".
+
+That it. Hopefully it works now!
+
+
 ## Conclusion
 
 By following these steps, you should now have the text-to-speech model installed and running on your local machine. You can experiment with different models by checking the available models in the code and selecting the one you prefer. Enjoy generating more human-like voices!
