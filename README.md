@@ -113,16 +113,17 @@ to:
 
 ```
 print("file path: ", file_path)
-exit()
 with open(file_path, "r", encoding="utf-8") as json_file:
    self.models_dict = json.load(json_file)
 ```
 
 Rerun the script.
 
-Now it should print the file path. Open that file with vscode or another editor. The editor will show you the problem. The problem is on line 10. Remove ",".
+Now it should print the file path. Before showing the error. Open that file with vscode or another editor. The editor will show you the problem. The problem is on line 10. Remove ",".
 
-That it. Hopefully it works now!
+Don't forget to remove the earlier edits to file "manage.py".
+
+That's it. Hopefully it works now!
 
 
 ## Conclusion
